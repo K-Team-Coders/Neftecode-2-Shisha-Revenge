@@ -4,7 +4,7 @@
       <SidebarMain />
     </div>
     <div
-      class="ml-72 relative w-full bg-frameBackground rounded-md border-[0.5px] duration-500"
+      class="ml-72 relative w-full bg-frameBackground rounded-md border-[0.5px] duration-500 shadow-md"
     >
       <div class="p-4 h-full">
         <div>
@@ -131,12 +131,12 @@
             </button>
           </div>
         </div>
-        <hr class="h-px my-8 bg-gray-400" />
+        <hr class="h-px my-4 bg-gray-400" />
         <div class="">
           <div
-            class="w-full items-center flex border-[1px] rounded-xl h-12 text-activeText"
+            class="w-full items-center flex rounded-xl h-4 text-activeText"
           >
-            <p class="text-lg px-3">confidence:</p>
+            <p class="text-lg">confidence:</p>
           </div>
         </div>
       </div>
