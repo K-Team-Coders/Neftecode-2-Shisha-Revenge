@@ -4,7 +4,7 @@
       <SidebarMain />
     </div>
     <div
-      class="ml-72 w-full bg-frameBackground rounded-md border-[0.5px] duration-500"
+      class="ml-72 relative w-full bg-frameBackground rounded-md border-[0.5px] duration-500"
     >
       <div class="p-4 h-full">
         <div>
