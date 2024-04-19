@@ -6,12 +6,12 @@
         <p
           class="text-activeText text-8xl text-center rainbows z-20 font-stengazeta -mb-5 duration-500"
         >
-          РУСТИМ
+          ДРЮКС
         </p>
         <p
           class="text-base z-30 font-stengazeta text-center text-activeText duration-500"
         >
-          интеллектуальный помощник
+          интеллектуальный химический эксперт
         </p>
       </div>
     </router-link>
