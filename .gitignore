@@ -1,2 +1,7 @@
 /train_data_fix_concat.csv
 /venv
+smiles_test_set_public.csv
+smiles_train_set.csv
+test_data_fix_concat.csv
+test_set_public.csv
+train_data.csv
