@@ -11,7 +11,7 @@
         <p
           class="text-base z-30 font-stengazeta text-center text-activeText duration-500"
         >
-          Интеллектуальный химический эксперт
+          интеллектуальный химический эксперт
         </p>
       </div>
     </router-link>
