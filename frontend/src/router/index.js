@@ -2,19 +2,10 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
   {
-    path: "/search_document",
-    name: "SeacrhDocs",
-    props(route) {
-      return { text: route.query.text };
-    },
-
-    component: () => import("../views/SearchDocument.vue"),
-  },
-  {
     path: "/",
-    name: "Tenders",
+    name: "Laboratory",
 
-    component: () => import("../views/Tender.vue"),
+    component: () => import("../views/Laboratory.vue"),
   },
   {
     path: "/notfound",

@@ -6,12 +6,12 @@
         <p
           class="text-activeText text-8xl text-center rainbows z-20 font-stengazeta -mb-5 duration-500"
         >
-          РУСТИМ
+          Дрюкс
         </p>
         <p
           class="text-base z-30 font-stengazeta text-center text-activeText duration-500"
         >
-          интеллектуальный помощник
+          Интеллектуальный химический эксперт
         </p>
       </div>
     </router-link>
@@ -61,13 +61,7 @@ export default {
           route: "/",
           isActive: this.$route.path === "/",
         },
-        {
-          category: "Архив",
-          name: "translate",
-          classed: "w-8 h-8 text-yellow-400",
-          route: "/search_document",
-          isActive: this.$route.path === "/search_document",
-        },
+
       ];
     },
     isDarkMode() {
