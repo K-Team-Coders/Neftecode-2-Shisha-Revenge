@@ -5,3 +5,7 @@ smiles_train_set.csv
 test_data_fix_concat.csv
 test_set_public.csv
 train_data.csv
+*.zip
+*.csv
+*.pdf
+*.png
