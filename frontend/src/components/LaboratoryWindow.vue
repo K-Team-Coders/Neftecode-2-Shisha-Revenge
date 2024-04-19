@@ -36,7 +36,7 @@
                   или
                   <span class="font-bold">перетащите его</span>
                 </p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">.CSV</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">.CSV</p>
               </div>
               <input
                 id="dropzone-file"
@@ -56,7 +56,7 @@
             <button
               @click.prevent="searchTender()"
               type="button"
-              class="text-activeText px-5 py-2 rounded-md bg-blue-700 text-neutral-100 shadow-sm hover:bg-blue-900 duration-300"
+              class="text-activeText px-5 py-2 rounded-md dark:bg-blue-700/45 bg-blue-700/80 text-neutral-100 shadow-md dark:hover:bg-blue-900 duration-300"
             >
               Выполнить
             </button>
@@ -64,28 +64,28 @@
         </div>
         <hr class="h-px my-8 bg-gray-400" />
         <div class="flex justify-end">
-          <div class="shadow-md rounded-xl flex justify-end">
+          <div class="shadow-md rounded-md flex justify-end bg-blue-700/15">
             <button
               :class="{
-                'bg-blue-800 border-[1px] text-neutral-100':
+                'dark:bg-blue-700/45 bg-blue-700/80  text-neutral-100':
                   isActiveButton === 1,
-                'bg-transparent dark:text-neutral-100 border-[1px] text-neutral-800':
+                'bg-transparent dark:text-neutral-100  text-neutral-800':
                   isActiveButton !== 1,
               }"
               @click="toggleButton(1)"
-              class="px-4 py-2 rounded-l-xl duration-200"
+              class="px-4 py-2 rounded-l-md duration-200"
             >
               Smiles
             </button>
             <button
               :class="{
-                'bg-blue-800 border-[1px] text-neutral-100':
+                'dark:bg-blue-700/45 bg-blue-700/80 text-neutral-100':
                   isActiveButton === 2,
-                'bg-transparent border-[1px] dark:text-neutral-100 text-neutral-800':
+                'bg-transparent   dark:text-neutral-100 text-neutral-800':
                   isActiveButton !== 2,
               }"
               @click="toggleButton(2)"
-              class="px-4 py-2 rounded-r-xl duration-200"
+              class="px-4 py-2 rounded-r-md duration-200"
             >
               что то
             </button>
@@ -125,7 +125,7 @@
             <button
               @click.prevent="searchTender()"
               type="button"
-              class="text-activeText px-5 py-2 rounded-md bg-blue-700 text-neutral-100 shadow-sm hover:bg-blue-900 duration-300"
+              class="text-activeText px-5 py-2 rounded-md dark:bg-blue-700/45 bg-blue-700/80 text-neutral-100 shadow-md dark:hover:bg-blue-900 duration-300"
             >
               Выполнить
             </button>
