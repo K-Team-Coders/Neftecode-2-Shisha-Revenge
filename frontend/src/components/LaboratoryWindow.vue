@@ -121,7 +121,7 @@
               />
             </div>
           </transition>
-          <div class="flex pt-3 justify-end">
+          <div class="flex pt-4 justify-end">
             <button
               @click.prevent="searchTender()"
               type="button"
@@ -132,7 +132,6 @@
           </div>
         </div>
         <hr class="h-px my-8 bg-gray-400" />
-
         <div class="">
           <div
             class="w-full items-center flex border-[1px] rounded-xl h-12 text-activeText"
