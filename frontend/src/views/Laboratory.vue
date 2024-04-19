@@ -1,13 +1,13 @@
 <template>
   <div class="bg-background w-full min-h-screen duration-500">
-    <TenderWindow />
+    <LaboratoryWindow />
   </div>
 </template>
 <script>
-import TenderWindow from "@/components/TenderWindow.vue";
+import LaboratoryWindow from "@/components/LaboratoryWindow.vue";
 
 export default {
-  components: { TenderWindow },
+  components: { LaboratoryWindow },
 };
 </script>
 <style></style>
