@@ -6,83 +6,133 @@
     <div
       class="ml-72 w-full bg-frameBackground rounded-md border-[0.5px] duration-500"
     >
-      <div class="h-full p-4">
-        <!-- Блок поиска -->
-        <div class="">
-          <p class="text-activeText text-xl font-bold text-center">Поиск</p>
-          <div class="flex flex-col gap-3 border-neutral-600 duration-500 pt-4">
-            <!-- Ключевые слова -->
-            <div class="flex items-start w-full">
-              <p class="text-activeText w-1/6">Ключевое слово</p>
-              <input
-                v-model="keyword"
-                class="rounded-md w-4/6 h-12 pl-2.5 placeholder:text-sm border-[1px] border-neutral-300 shadow-sm"
-                placeholder="Например: сталь, 36.40.11.133"
-              />
-            </div>
-            <!-- Исключить слова -->
-            <div class="flex items-center w-full">
-              <p class="text-activeText w-1/6">Исключить слова</p>
-              <input
-                class="rounded-md pl-2.5 w-4/6 h-8 border-[1px] text-sm border-neutral-300 shadow-sm"
-                placeholder="Введите слова-исключения"
-              />
-            </div>
-            <!-- Цена -->
-
-            <!-- Дата -->
-            <div class="flex items-center w-full">
-              <p class="text-activeText w-1/6">Период публикации</p>
-              <div class="w-4/6">
-                <VueDatePicker
-                  day-picker
-                  v-model="date"
-                  range
-                  multi-calendars
-                  text-input
-                  placeholder="Напишите или выберите период..."
-                  locale="ru"
-                />
+      <div class="p-4 h-full">
+        <div>
+          <div class="flex flex-col items-center justify-center w-full">
+            <label
+              for="dropzone-file"
+              class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer duration-300 bg-neutral-100 dark:hover:bg-bray-800 dark:bg-gray-800 hover:bg-gray-100 dark:border-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+              @dragover.prevent
+              @drop="handleDrop"
+            >
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg
+                  class="w-24 h-24 mb-1 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 16"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                  />
+                </svg>
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="font-bold"
+                    >Нажмите чтобы загрузить файл</span
+                  > или 
+                  <span class="font-bold"
+                    >перетащите его</span
+                  >
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">.CSV</p>
               </div>
-            </div>
-            <!-- Кнопка найти -->
-            <div class="flex pt-3">
-              <button
-                @click.prevent="searchTender()"
-                type="button"
-                class="text-activeText px-5 py-2 rounded-md bg-blue-700 text-neutral-100 shadow-sm hover:bg-blue-900 duration-300"
-              >
-                Найти
-              </button>
-            </div>
+              <input
+                id="dropzone-file"
+                type="file"
+                class="hidden"
+                @change="handleFile"
+              />
+            </label>
+            <p
+              v-if="fileName"
+              class="mt-2 text-md text-neutral-500 dark:text-gray-400"
+            >
+              {{ fileName }}
+            </p>
+          </div>
+          <div class="flex pt-3 justify-end">
+            <button
+              @click.prevent="searchTender()"
+              type="button"
+              class="text-activeText px-5 py-2 rounded-md bg-blue-700 text-neutral-100 shadow-sm hover:bg-blue-900 duration-300"
+            >
+              Выполнить
+            </button>
           </div>
         </div>
         <hr class="h-px my-8 bg-gray-300" />
-        <!-- Всего тендеров найдено и сортировка -->
-        <div class="flex items-center">
-          <p class="text-neutral-400 text-sm">125 300 закупок</p>
-          <select
-            name="pets"
-            class="rounded-md px-2 py-1 ml-4 text-sm border-2 border-neutral-300 shadow-sm"
-          >
-            <option value="">По дате публикации (убыв.)</option>
-            <option value="">По дате публикации (возр.)</option>
-            <option value="">По релевантоности</option>
-            <option value="">По окончанию подачи заявок</option>
-            <option value="">По дате планируемой публикации</option>
-            <option value="">По НМЦ</option>
-          </select>
+        <div class="flex justify-end">
+          <div class="shadow-xl flex justify-end">
+            <button
+              :class="{
+                'bg-blue-800 border-[1px] border-blue-800 text-neutral-100':
+                  isActiveButton === 1,
+                'bg-transparent border-[1px] dark:text-neutral-100 text-neutral-800':
+                  isActiveButton !== 1,
+              }"
+              @click="toggleButton(1)"
+              class="px-4 py-2 rounded-l-xl duration-200"
+            >
+              Smiles
+            </button>
+            <button
+              :class="{
+                'bg-blue-800 border-[1px] border-blue-800 text-neutral-100':
+                  isActiveButton === 2,
+                'bg-transparent border-[1px] dark:text-neutral-100 text-neutral-800':
+                  isActiveButton !== 2,
+              }"
+              @click="toggleButton(2)"
+              class="px-4 py-2 rounded-r-xl duration-200"
+            >
+              что то
+            </button>
+          </div>
         </div>
-        <!-- Карточки найденных тендеров -->
-        <div class="pt-2">
-          <LoaderBig v-if="isLoading" class="flex justify-center pt-16"/>
-          <ErrorPage v-else-if="isError" class="flex justify-center pt-16"/>
-          <TenderCard
-            v-else
-            :tender_info="tender"
-            v-for="tender in tenders_info"
-            :key="tender"
-          />
+        <div class="">
+          <div class="flex flex-col items-start w-full">
+            <p class="text-activeText mb-1">что то 1</p>
+            <input
+              v-model="keyword1"
+              @input="toggleSecondInput"
+              class="rounded-md w-full h-12 pl-2.5 placeholder:text-sm border-[1px] border-neutral-300 shadow-sm"
+              placeholder="Например: "
+            />
+          </div>
+          <transition
+            enter-active-class="duration-300"
+            enter-from-class="opacity-0"
+            enter-to-class="opacity-100"
+            leave-active-class="duration-300"
+            leave-from-class="opacity-100"
+            leave-to-class="opacity-0"
+          >
+            <div
+              v-if="keyword1"
+              class="flex flex-col items-start w-full pt-2 duration-300"
+            >
+              <p class="text-activeText mb-1">что то 2</p>
+              <input
+                v-model="keyword2"
+                class="rounded-md w-full h-12 pl-2.5 placeholder:text-sm border-[1px] border-neutral-300 shadow-sm"
+                placeholder="Например: "
+              />
+            </div>
+          </transition>
+          <div class="flex pt-3 justify-end">
+            <button
+              @click.prevent="searchTender()"
+              type="button"
+              class="text-activeText px-5 py-2 rounded-md bg-blue-700 text-neutral-100 shadow-sm hover:bg-blue-900 duration-300"
+            >
+              Выполнить
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -90,39 +140,48 @@
 </template>
 <script>
 import axios from "axios";
-import AssistantCategoryService from "./AssistantCategoryService.vue";
-import AssistantCategoryServiceSection from "./AssistantCategoryServiceSection.vue";
-import BaseIcon from "./BaseIcon.vue";
 import SidebarMain from "./SidebarMain.vue";
-import TenderCard from "./TenderCard.vue";
-import VueDatePicker from "@vuepic/vue-datepicker";
-import LoaderBig from "./LoaderBig.vue";
-import "@vuepic/vue-datepicker/dist/main.css";
-import ErrorPage from './ErrorPage.vue';
 
 export default {
   components: {
-    AssistantCategoryService,
-    BaseIcon,
-    AssistantCategoryServiceSection,
     SidebarMain,
-    TenderCard,
-    VueDatePicker,
-    LoaderBig,
-    ErrorPage
   },
 
   data() {
     return {
-      keyword: "",
+      keyword1: "",
+      keyword2: "",
       date: null,
       isLoading: false,
       tenders_info: [],
-      isError: false
+      isError: false,
+      isActiveButton: 1,
+      fileName: null,
     };
   },
 
   methods: {
+    toggleSecondInput() {
+      if (this.keyword1) {
+        this.keyword2 = "";
+      }
+    },
+    handleFile(event) {
+      const file = event.target.files[0];
+      console.log("Загруженный файл:", file);
+      this.fileName = file.name;
+    },
+    handleDrop(event) {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      console.log("Перетащенный файл:", file);
+      this.fileName = file.name;
+    },
+    toggleButton(buttonIndex) {
+      if (this.isActiveButton !== buttonIndex) {
+        this.isActiveButton = buttonIndex;
+      }
+    },
     searchTender() {
       this.isLoading = true;
       let post_data = {
@@ -142,8 +201,7 @@ export default {
         })
         .catch((error) => {
           this.isError = true;
-        }
-        )
+        });
     },
     datetimeToDate(datetime) {
       const date = new Date(datetime);

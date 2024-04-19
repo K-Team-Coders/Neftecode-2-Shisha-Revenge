@@ -55,8 +55,8 @@ export default {
     services() {
       return [
         {
-          category: "Тендеры",
-          name: "chat",
+          category: "Химия",
+          name: "him",
           classed: "w-8 h-8 text-blue-400",
           route: "/",
           isActive: this.$route.path === "/",

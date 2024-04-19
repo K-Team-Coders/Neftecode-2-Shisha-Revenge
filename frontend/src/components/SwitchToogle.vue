@@ -7,6 +7,7 @@
       :checked="checked"
       @change="$emit('update:checked', $event.target.checked)"
     />
+    <span class="label text-activeText font-mono">{{ label }}</span>
     <span class="switch"></span>
     <span class="label text-activeText font-mono">{{ label }}</span>
   </label>
