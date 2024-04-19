@@ -32,12 +32,9 @@
                   />
                 </svg>
                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-bold"
-                    >Нажмите чтобы загрузить файл</span
-                  > или 
-                  <span class="font-bold"
-                    >перетащите его</span
-                  >
+                  <span class="font-bold">Нажмите чтобы загрузить файл</span>
+                  или
+                  <span class="font-bold">перетащите его</span>
                 </p>
                 <p class="text-xs text-gray-500 dark:text-gray-400">.CSV</p>
               </div>
@@ -65,14 +62,14 @@
             </button>
           </div>
         </div>
-        <hr class="h-px my-8 bg-gray-300" />
+        <hr class="h-px my-8 bg-gray-400" />
         <div class="flex justify-end">
-          <div class="shadow-xl flex justify-end">
+          <div class="shadow-md rounded-xl flex justify-end">
             <button
               :class="{
-                'bg-blue-800 border-[1px] border-blue-800 text-neutral-100':
+                'bg-blue-800 border-[1px] text-neutral-100':
                   isActiveButton === 1,
-                'bg-transparent border-[1px] dark:text-neutral-100 text-neutral-800':
+                'bg-transparent dark:text-neutral-100 border-[1px] text-neutral-800':
                   isActiveButton !== 1,
               }"
               @click="toggleButton(1)"
@@ -82,7 +79,7 @@
             </button>
             <button
               :class="{
-                'bg-blue-800 border-[1px] border-blue-800 text-neutral-100':
+                'bg-blue-800 border-[1px] text-neutral-100':
                   isActiveButton === 2,
                 'bg-transparent border-[1px] dark:text-neutral-100 text-neutral-800':
                   isActiveButton !== 2,
@@ -100,7 +97,7 @@
             <input
               v-model="keyword1"
               @input="toggleSecondInput"
-              class="rounded-md w-full h-12 pl-2.5 placeholder:text-sm border-[1px] border-neutral-300 shadow-sm"
+              class="rounded-md w-full h-12 pl-2.5 placeholder:text-sm shadow-sm"
               placeholder="Например: "
             />
           </div>
@@ -132,6 +129,15 @@
             >
               Выполнить
             </button>
+          </div>
+        </div>
+        <hr class="h-px my-8 bg-gray-400" />
+
+        <div class="">
+          <div
+            class="w-full items-center flex border-[1px] rounded-xl h-12 text-activeText"
+          >
+            <p class="text-lg px-3">confidence:</p>
           </div>
         </div>
       </div>
