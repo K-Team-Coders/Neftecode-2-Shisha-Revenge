@@ -49,4 +49,8 @@ if __name__ == "__main__":
     df_smiles_test=pd.read_csv(r"..\data\smiles_test_set_public.csv")
     train_set = extractor.process_dataframe(df_smiles_train)
     test_set = extractor.process_dataframe(df_smiles_test)
+
+    test_set=test_set.drop_duplicates(subset=['blend_id'])
+    train_set=train_set.drop_duplicates(subset=['blend_id'])
+    train_set=train_set.dropna()
     
